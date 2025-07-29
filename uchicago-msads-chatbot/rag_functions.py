@@ -10,6 +10,9 @@ from langchain.retrievers.document_compressors import LLMChainExtractor
 from langchain import hub
 import streamlit as st
 
+import sys
+sys.modules['sqlite3'] = __import__('pysqlite3')
+
 def format_docs(docs):
     """Format retrieved documents for the prompt"""
     return "\n\n".join(doc.page_content for doc in docs)
