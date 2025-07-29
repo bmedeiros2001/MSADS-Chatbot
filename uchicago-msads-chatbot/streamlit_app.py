@@ -68,12 +68,19 @@ st.markdown("""
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# OpenAI API Key (you'll set this as a secret in deployment)
+########################
+# OPENAI KEY
+# If on os., pick that one. if not, let user input their own
+########################
 OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
 
 if not OPENAI_API_KEY:
-    st.error("⚠️ OpenAI API key not found. Please set up your API key in the deployment secrets.")
-    st.stop()
+    OPENAI_API_KEY = st.text_input("Enter your OpenAI API key:", type="password", help="Get your API key from https://platform.openai.com/api-keys")
+    
+    if not OPENAI_API_KEY:
+        st.warning("⚠️ Please enter your OpenAI API key to use the chatbot.")
+        st.info("Don't have an API key? Get one at https://platform.openai.com/api-keys")
+        st.stop()
 
 # Main chat interface
 st.markdown("### Ask me anything about the UChicago MSADS program!")
