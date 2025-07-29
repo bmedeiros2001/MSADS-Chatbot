@@ -23,13 +23,10 @@ def format_docs(docs):
 
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-#@st.cache_resource
 def load_vectorstore():
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    return Chroma(persist_directory="msads_vectorstore", embedding_function=embeddings)
+    return Chroma(persist_directory="../msads_vectorstore", embedding_function=embeddings)
 vectorstore = load_vectorstore()
-
-# print line for debugging
 print("DEBUG: Your vectorstore contains", len(vectorstore.get()), "documents")
 
 
