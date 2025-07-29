@@ -1,3 +1,8 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
 import os
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
@@ -10,8 +15,7 @@ from langchain.retrievers.document_compressors import LLMChainExtractor
 from langchain import hub
 import streamlit as st
 
-import sys
-sys.modules['sqlite3'] = __import__('pysqlite3')
+
 
 def format_docs(docs):
     """Format retrieved documents for the prompt"""
