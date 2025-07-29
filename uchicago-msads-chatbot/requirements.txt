@@ -7,3 +7,4 @@ requests
 langchain_chroma
 langchain_openai
 langchain_community
+pysqlite3-binary
