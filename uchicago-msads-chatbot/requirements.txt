@@ -4,3 +4,6 @@ langchain
 pandas
 numpy
 requests
+langchain_chroma
+langchain_openai
+langchain_community
