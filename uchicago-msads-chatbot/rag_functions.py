@@ -25,7 +25,7 @@ def format_docs(docs):
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 def load_vectorstore():
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    return Chroma(persist_directory="../msads_vectorstore", embedding_function=embeddings)
+    return Chroma(persist_directory="uchicago-msads-chatbot/msads_vectorstore", embedding_function=embeddings)
 vectorstore = load_vectorstore()
 print("DEBUG: Your vectorstore contains", len(vectorstore.get()), "documents")
 
